@@ -21,9 +21,10 @@ This Attainment % is then used for calculating the bonus amount. The following b
 4. If the Attainment is > 100% <= 150%, bonus is calculated as (100% + (Attainment % - 100%) * 4) * Base Pay
 5. If the Attainment is > 150%, the saleperson gets the maximum bonus of 3 x Base Pay
 
-
-
 ### Calculation of Bonus
 
 1. The calculation steps mentioned above are applied to the simulated attainment to calculate the bonus for each employee
 2. The bonus amount is summed up and shown as the Total Bonus $ in UI
+
+### Notes:
+For those interested in looking at how the code executes, please visit [here](https://github.com/Sanjay-Srivastava/ShinyProject)
