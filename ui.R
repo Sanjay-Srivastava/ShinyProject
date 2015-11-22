@@ -31,7 +31,7 @@ shinyUI(fluidPage(
       textOutput ("aText"),
       tabsetPanel( tabPanel("Bonus Distribution", plotOutput ("aGraph")),
                    tabPanel("Bonus vs Attainment", plotOutput("bGraph")),
-                   tabPanel("Simulation Data", tableOutput("aTable")),
+                   tabPanel("Simulation Data", dataTableOutput(outputId = "aTable")),
                    tabPanel("About", includeMarkdown("README.md"))
                  )
               ) # End - Tab Set Panel

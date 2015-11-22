@@ -1,5 +1,6 @@
 library(shiny)
 library(markdown)
+library(data.table)
 
 set.seed(1000)
 
@@ -12,6 +13,12 @@ shinyServer(function(input, output) {
                                           ifelse(x$AttainmentPercent <= 100, (x$AttainmentPercent - 50) * 2, 
                                              ifelse(x$AttainmentPercent > 150, 300, 
                                                     100 + (x$AttainmentPercent - 100)*4 ))) * input$input_base/100
+                        x$PerformanceGroup = ifelse(x$AttainmentPercent <= 50, "Poor - No Bonus", 
+                                                    ifelse(x$AttainmentPercent <= 100, "Below Par", 
+                                                           ifelse(x$AttainmentPercent > 150, "Top Performer", 
+                                                                  "Above Par")))
+                        x$AttainmentPercent = round(x$AttainmentPercent, 2)
+                        x$BonusAmount = round(x$BonusAmount,0)
                         x = x[order(x$AttainmentPercent), ]
                         x
                      })
@@ -40,9 +47,9 @@ shinyServer(function(input, output) {
                              type = "l")
                       })
   
-  output$aTable = renderTable({
+  output$aTable = renderDataTable({
                         this_data = new_data()
-                        names(this_data) = c("Attainment %", "Bnous $")
+                        names(this_data) = c("Attainment %", "Bnous $", "Performance Group")
                         this_data
                              })
 
