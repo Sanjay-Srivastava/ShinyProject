@@ -1,4 +1,6 @@
 library(shiny)
+library(markdown)
+
 set.seed(1000)
 
 # Define server logic required to draw a histogram
